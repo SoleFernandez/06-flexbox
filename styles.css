@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu-container {
+    color: #fff;
+    background-color: #5995da;  /* Blue */
+    padding: 20px 0;
+
+    display: flex;
+
+    /* After you’ve got a flex container, your next job is to define the horizontal alignment of its items. That’s what the justify-content property is for. */
+    justify-content: center;
+
+    /* This has the same effect as adding a margin: 0 auto declaration to the .menu element. But, notice how we did this by adding a property to the parent element (the flex container) instead of directly to the element we wanted to center (the flex item). */
+
+    /* Other values for justify-content (eje horizontal) are shown below:
+
+        center
+        flex-start
+        flex-end
+        space-around
+        space-between */
+}
+
+.menu {
+    border: 1px solid #fff;  /* Blue */
+    width: 900px;
+    display: flex;
+    justify-content:space-between;
+}
+
+/* Flexbox uses two types of boxes: “flex containers” and “flex items”. The job of a flex container is to group a bunch of flex items together and define how they’re positioned. */
+
+/* Every HTML element that’s a direct child of a flex container is an “item”. */
+
+/* Flex containers only know how to position elements that are one level deep (i.e., their child elements). They don’t care one bit about what’s inside their flex items. */
+
+.links {
+    /* border: 1px solid #fff;  For debugging */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login {
+    margin-left: 20px;
+}
+
+.header-container {
+    color: #5995da;
+    background-color: #d6e9fe;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.header {
+    
+    width: 900px;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* The available options for align-items (eje vertical) is similar to justify-content:
+
+    center
+    flex-start   (top)
+    flex-end      (bottom)
+    stretch
+    baseline */
+
+    /* The stretch option lets you display the background of each element. The box for each item extends the full height of the flex container, regardless of how much content it contains. A common use case for this behavior is creating equal-height columns with a variable amount of content in each one. */
+
+    .photo-grid-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .photo-grid {
+        width: 900px;
+        display: flex;
+        justify-content: center;
+
+        /* Adding the following flex-wrap property forces items that don’t fit to get bumped down to the next row */
+        flex-wrap: wrap;
+        flex-direction: row;
+
+        /* When you rotate the direction of a container, you also rotate the direction of the justify-content property. */
+
+        align-items: center;
+    }
+
+    .photo-grid-item {
+        width: 300px;
+        height: 300px;
+
+    }
+
+    /* Unlike setting row-reverse and column-reverse on a flex container, order works across row/column boundaries. */
+
+    .first-item {
+        order: 1;
+    }
+
+    .last-item {
+        order: -1;
+    }
+
+    .social,
+    .subscribe {
+        align-self: flex-end;
+
+        /* You can align elements in other ways using the same values as the align-items property, listed below for convenience.
+
+        center
+        flex-start   (top)
+        flex-end      (bottom)
+        stretch
+        baseline */
+
+        margin-bottom: 20px;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .footer-item {
+        border: 1px solid #fff;
+        background-color: #D6E9FE;
+        height: 200px;
+
+        /* That flex: 1; line tells the items to stretch to match the width of .footer. Since they all have the same weight, they’ll stretch equally. */
+        flex: 1;
+    }
+
+    /* we can make the third item grow twice as fast as the other two with the following rule: */
+
+    .footer-three {
+        flex: 2;
+    }
+
+    /* Compare this to the justify-content property, which distributes extra space between items. This is similar, but now we’re distributing that space into the items themselves. The result is full control over how flex items fit into their containers. */
+
+    /* We can even mix-and-match flexible boxes with fixed-width ones. flex: initial falls back to the item’s explicit width property. This lets us combine static and flexible boxes in complex ways. */
+
+    .footer-one,
+    .footer-three {
+        background-color: #5995da;
+        flex: initial;
+        width: 300px;
+    }
+
+    /* Without that flex: initial; line, the flex: 1; declaration would be inherited from the .footer-item rule, causing the width properties to be ignored. initial fixes this, and we get a flexible layout that also contains fixed-width items. When you resize the browser window, you’ll see that only the middle box in the footer gets resized. */
+
+    /* We can replicate the desired layout by sticking an auto-margin between the items we want to separate, like so: */
+    .signup {
+        margin-left: auto;
+    }
+
+    /* Auto-margins eat up all the extra space in a flex container, so instead of distributing items equally, this moves the .signup and any following items (.login) to the right side of the container. This will give you the exact same layout we had before, but without that extra nested <div> to group them. Sometimes, it’s nice to keep your HTML flatter. */
+
+    /* SUMMARY */
+
+    /* Use display: flex; to create a flex container.
+    * Use justify-content to define the horizontal alignment of items.
+    * Use align-items to define the * vertical alignment of items.
+    * Use flex-direction if you need columns instead of rows.
+    * Use the row-reverse or column-reverse values to flip item order.
+    * Use order to customize the order of individual elements.
+    * Use align-self to vertically align individual items.
+    * Use flex to create flexible boxes that can stretch and shrink. */
+
+
+    /* The hard part isn’t actually writing the HTML and CSS code, it’s figuring out, conceptually (on a piece of paper), the behavior of all the necessary boxes to create a given layout. */
